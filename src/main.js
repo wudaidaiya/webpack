@@ -11,3 +11,9 @@ import imgUr from './assets/logo_small.png'
 const Img = document.createElement("img")
 Img.src = imgUr
 document.body.appendChild(Img)
+import './assets/fonts/iconfont.css'
+class App {
+    static a = 123
+  }
+  
+  console.log(App.a)

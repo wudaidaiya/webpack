@@ -60,6 +60,29 @@ module.exports = {
             // type: 'asset/inline' // 导出一个资源的 data URI
                 
         },
+        { // webpack5默认内部不认识这些文件, 所以当做静态资源直接输出即可
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            type: 'asset/resource',
+            generator: {
+              filename: 'font-[name].[hash:6][ext]'
+            },
+            parser:{
+              dataUrlCondition:{
+                maxSize:1 * 1024,
+                //maxSize 限制最大值
+              },
+            }
+        },
+        {
+          test: /\.js$/,
+          exclude: /(node_modules)/,
+          use: {
+              loader: 'babel-loader',
+              options: {
+                  presets: ['@babel/preset-env'] // 预设:转码规则(用bable开发环境本来预设的)
+              }
+          }
+      }
  
         ]
     }
